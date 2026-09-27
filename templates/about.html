@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}DustMonitor - About{% endblock %}
+
+{% block content %}
+<div class="container section">
+    <h1 class="section-title">About the Project</h1>
+    
+    <div style="max-width: 800px; margin: 0 auto;">
+        <div class="card" style="margin-bottom: 30px; text-align: left;">
+            <h2 class="text-green" style="margin-bottom: 15px;">Project Overview</h2>
+            <p style="margin-bottom: 20px;">
+                DustMonitor is an academic project designed to analyze the concentration of dust (specifically PM2.5 and PM10 particulate matter) in households located near main roads. By integrating environmental data and machine learning, this project aims to understand how various factors contribute to air pollution.
+            </p>
+            
+            <h3 class="text-green" style="margin-top: 25px; margin-bottom: 10px;">Problem Statement</h3>
+            <div style="background-color: var(--gray-color); padding: 15px; border-left: 4px solid var(--primary-color); font-style: italic; margin-bottom: 25px;">
+                “Households near major roads may experience dust and particulate pollution because of traffic, road conditions, construction and weather conditions. This project analyzes these factors to understand dust concentration.”
+            </div>
+            
+            <h3 class="text-green" style="margin-bottom: 15px;">Objectives</h3>
+            <ul style="list-style-position: inside; margin-bottom: 25px; padding-left: 10px;">
+                <li><i class="fas fa-check text-green" style="margin-right: 10px;"></i> Analyze dust concentration</li>
+                <li><i class="fas fa-check text-green" style="margin-right: 10px;"></i> Study environmental factors</li>
+                <li><i class="fas fa-check text-green" style="margin-right: 10px;"></i> Analyze PM2.5 and PM10</li>
+                <li><i class="fas fa-check text-green" style="margin-right: 10px;"></i> Train machine learning models</li>
+                <li><i class="fas fa-check text-green" style="margin-right: 10px;"></i> Predict dust concentration</li>
+                <li><i class="fas fa-check text-green" style="margin-right: 10px;"></i> Provide environmental recommendations</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 50px;">Technology Used</h2>
+        <div class="factors-grid">
+            <div class="factor-card" style="align-items: center; text-align: center;">
+                <i class="fab fa-html5 icon-small"></i>
+                <h4>HTML</h4>
+            </div>
+            <div class="factor-card" style="align-items: center; text-align: center;">
+                <i class="fab fa-css3-alt icon-small"></i>
+                <h4>CSS</h4>
+            </div>
+            <div class="factor-card" style="align-items: center; text-align: center;">
+                <i class="fab fa-js icon-small"></i>
+                <h4>JavaScript</h4>
+            </div>
+            <div class="factor-card" style="align-items: center; text-align: center;">
+                <i class="fab fa-python icon-small"></i>
+                <h4>Python</h4>
+            </div>
+            <div class="factor-card" style="align-items: center; text-align: center;">
+                <i class="fas fa-table icon-small"></i>
+                <h4>Pandas & NumPy</h4>
+            </div>
+            <div class="factor-card" style="align-items: center; text-align: center;">
+                <i class="fas fa-brain icon-small"></i>
+                <h4>Scikit-learn</h4>
+            </div>
+            <div class="factor-card" style="align-items: center; text-align: center;">
+                <i class="fas fa-chart-pie icon-small"></i>
+                <h4>Chart.js</h4>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

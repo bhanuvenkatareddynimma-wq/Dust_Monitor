@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}DustMonitor - Analysis{% endblock %}
+
+{% block content %}
+<div class="container section">
+    <h1 class="section-title">Dust Concentration Analysis</h1>
+    
+    <div style="max-width: 800px; margin: 0 auto 40px auto; text-align: center;">
+        <p style="font-size: 1.1rem; color: var(--text-light); padding: 15px; background: var(--gray-color); border-radius: var(--border-radius); border-left: 4px solid var(--primary-color);">
+            “These visualizations help identify relationships between environmental conditions and particulate matter concentration.”
+        </p>
+    </div>
+
+    <div class="charts-grid">
+        <div class="chart-container">
+            <h3>Distance from Road vs PM2.5</h3>
+            <canvas id="analysis-distance"></canvas>
+            <p style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 10px;">Inverse relationship: Further distance reduces PM2.5</p>
+        </div>
+        
+        <div class="chart-container">
+            <h3>Traffic Density vs PM2.5</h3>
+            <canvas id="analysis-traffic"></canvas>
+            <p style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 10px;">Direct relationship: Higher traffic increases PM2.5</p>
+        </div>
+        
+        <div class="chart-container">
+            <h3>Wind Speed vs PM2.5</h3>
+            <canvas id="analysis-wind"></canvas>
+            <p style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 10px;">Dispersion effect: Higher wind often scatters particulate matter</p>
+        </div>
+        
+        <div class="chart-container">
+            <h3>PM2.5 vs PM10</h3>
+            <canvas id="analysis-pm"></canvas>
+            <p style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 10px;">Strong positive correlation between fine and coarse dust</p>
+        </div>
+        
+        <div class="chart-container chart-wide">
+            <h3>PM2.5 Distribution</h3>
+            <canvas id="analysis-dist-25"></canvas>
+        </div>
+        
+        <div class="chart-container chart-wide">
+            <h3>PM10 Distribution</h3>
+            <canvas id="analysis-dist-10"></canvas>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
+{% endblock %}

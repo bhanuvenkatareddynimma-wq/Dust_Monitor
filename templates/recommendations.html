@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block title %}DustMonitor - Recommendations{% endblock %}
+
+{% block content %}
+<div class="container section">
+    <h1 class="section-title">Environmental Recommendations</h1>
+    
+    <div style="max-width: 800px; margin: 0 auto; text-align: center; margin-bottom: 40px;">
+        <p style="color: var(--text-light); font-size: 1.1rem;">
+            Based on the analysis of environmental factors and dust concentration, the following general awareness suggestions can help reduce household exposure to particulate matter.
+        </p>
+        <p style="font-size: 0.9rem; color: #888; margin-top: 10px; font-style: italic;">
+            Disclaimer: These are general environmental recommendations, not medical diagnosis or treatment claims.
+        </p>
+    </div>
+
+    <div class="cards-grid">
+        <div class="card" style="text-align: left;">
+            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <i class="fas fa-car-side" style="font-size: 2rem; color: var(--primary-color); margin-right: 15px;"></i>
+                <h3 style="margin: 0;">High Traffic Areas</h3>
+            </div>
+            <ul style="padding-left: 20px; color: var(--text-color);">
+                <li style="margin-bottom: 10px;">Keep windows facing main roads closed during peak traffic hours to prevent exhaust and road dust entry.</li>
+                <li style="margin-bottom: 10px;">Plant dense vegetation or hedges between the household and the road to act as a natural dust barrier.</li>
+                <li style="margin-bottom: 10px;">Use air purifiers with HEPA filters indoors to reduce PM2.5 accumulation.</li>
+            </ul>
+        </div>
+
+        <div class="card" style="text-align: left;">
+            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <i class="fas fa-hammer" style="font-size: 2rem; color: var(--primary-color); margin-right: 15px;"></i>
+                <h3 style="margin: 0;">Nearby Construction</h3>
+            </div>
+            <ul style="padding-left: 20px; color: var(--text-color);">
+                <li style="margin-bottom: 10px;">Ensure construction sites use water spraying techniques to suppress coarse dust (PM10).</li>
+                <li style="margin-bottom: 10px;">Seal gaps in doors and windows to prevent coarse particulate matter from blowing indoors.</li>
+                <li style="margin-bottom: 10px;">Clean indoor surfaces with damp cloths rather than dry dusting to avoid resuspending particles.</li>
+            </ul>
+        </div>
+
+        <div class="card" style="text-align: left;">
+            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <i class="fas fa-smog" style="font-size: 2rem; color: var(--primary-color); margin-right: 15px;"></i>
+                <h3 style="margin: 0;">High Dust Conditions</h3>
+            </div>
+            <ul style="padding-left: 20px; color: var(--text-color);">
+                <li style="margin-bottom: 10px;">Limit outdoor physical activities when local air quality index indicates high PM2.5 or PM10 levels.</li>
+                <li style="margin-bottom: 10px;">Wear appropriate masks (like N95) if prolonged outdoor exposure is necessary during high pollution days.</li>
+                <li style="margin-bottom: 10px;">Increase indoor humidity slightly to help settle suspended dust particles.</li>
+            </ul>
+        </div>
+
+        <div class="card" style="text-align: left;">
+            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <i class="fas fa-home" style="font-size: 2rem; color: var(--primary-color); margin-right: 15px;"></i>
+                <h3 style="margin: 0;">Household Maintenance</h3>
+            </div>
+            <ul style="padding-left: 20px; color: var(--text-color);">
+                <li style="margin-bottom: 10px;">Maintain clean surroundings by regularly sweeping outdoor patios and walkways with water.</li>
+                <li style="margin-bottom: 10px;">Monitor local air quality daily using reliable apps or websites to plan ventilation.</li>
+                <li style="margin-bottom: 10px;">Regularly clean or replace filters in air conditioning and ventilation systems.</li>
+            </ul>
+        </div>
+        </div>
+    </div>
+
+    <h2 class="section-title" style="margin-top: 60px;">Health & Care Advice</h2>
+    <div class="cards-grid">
+        <div class="card" style="text-align: left; border-left: 4px solid #28a745;">
+            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <i class="fas fa-heartbeat" style="font-size: 2rem; color: #28a745; margin-right: 15px;"></i>
+                <h3 style="margin: 0;">Good Air Quality</h3>
+            </div>
+            <p><strong>Status:</strong> PM2.5 &le; 12 µg/m³</p>
+            <ul style="padding-left: 20px; color: var(--text-color); margin-top: 10px;">
+                <li style="margin-bottom: 5px;">Ideal conditions for outdoor activities and exercise.</li>
+                <li style="margin-bottom: 5px;">Open windows to naturally ventilate your home.</li>
+                <li style="margin-bottom: 5px;">No special health precautions are necessary.</li>
+            </ul>
+        </div>
+
+        <div class="card" style="text-align: left; border-left: 4px solid #ffc107;">
+            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <i class="fas fa-exclamation-circle" style="font-size: 2rem; color: #ffc107; margin-right: 15px;"></i>
+                <h3 style="margin: 0;">Moderate Air Quality</h3>
+            </div>
+            <p><strong>Status:</strong> PM2.5 12.1 - 35.4 µg/m³</p>
+            <ul style="padding-left: 20px; color: var(--text-color); margin-top: 10px;">
+                <li style="margin-bottom: 5px;">Unusually sensitive individuals should consider limiting prolonged outdoor exertion.</li>
+                <li style="margin-bottom: 5px;">Keep windows partially closed during peak traffic.</li>
+                <li style="margin-bottom: 5px;">If you experience respiratory symptoms, reduce exposure.</li>
+            </ul>
+        </div>
+
+        <div class="card" style="text-align: left; border-left: 4px solid #fd7e14;">
+            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <i class="fas fa-head-side-cough" style="font-size: 2rem; color: #fd7e14; margin-right: 15px;"></i>
+                <h3 style="margin: 0;">Unhealthy for Sensitive Groups</h3>
+            </div>
+            <p><strong>Status:</strong> PM2.5 35.5 - 55.4 µg/m³</p>
+            <ul style="padding-left: 20px; color: var(--text-color); margin-top: 10px;">
+                <li style="margin-bottom: 5px;">People with asthma or heart disease, elderly, and children should limit outdoor activities.</li>
+                <li style="margin-bottom: 5px;">Close windows facing main roads.</li>
+                <li style="margin-bottom: 5px;">Consider turning on indoor air purifiers.</li>
+            </ul>
+        </div>
+
+        <div class="card" style="text-align: left; border-left: 4px solid #dc3545;">
+            <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                <i class="fas fa-lungs-virus" style="font-size: 2rem; color: #dc3545; margin-right: 15px;"></i>
+                <h3 style="margin: 0;">Unhealthy / Hazardous</h3>
+            </div>
+            <p><strong>Status:</strong> PM2.5 &gt; 55.4 µg/m³</p>
+            <ul style="padding-left: 20px; color: var(--text-color); margin-top: 10px;">
+                <li style="margin-bottom: 5px;">Everyone should avoid prolonged or heavy outdoor exertion.</li>
+                <li style="margin-bottom: 5px;">Wear an N95 mask if going outside is necessary.</li>
+                <li style="margin-bottom: 5px;">Keep all windows closed and run air purifiers constantly.</li>
+                <li style="margin-bottom: 5px;">Seek medical advice if you experience shortness of breath or chest pain.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

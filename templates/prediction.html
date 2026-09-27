@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}DustMonitor - Prediction{% endblock %}
+
+{% block content %}
+<div class="container section">
+    <h1 class="section-title">Predict Dust Concentration</h1>
+
+    <!-- Machine Learning Flow Preview -->
+    <div style="margin-bottom: 50px;">
+        <h2 class="text-center text-green" style="margin-bottom: 20px;">Machine Learning Workflow</h2>
+        <div class="project-flow" style="background-color: var(--gray-color);">
+            <div class="flow-step">Dataset</div>
+            <i class="fas fa-arrow-right flow-arrow"></i>
+            <div class="flow-step">Data<br>Preprocessing</div>
+            <i class="fas fa-arrow-right flow-arrow"></i>
+            <div class="flow-step">Feature<br>Selection</div>
+            <i class="fas fa-arrow-right flow-arrow"></i>
+            <div class="flow-step">Train/Test<br>Split</div>
+            <i class="fas fa-arrow-right flow-arrow"></i>
+            <div class="flow-step">Model<br>Training</div>
+            <i class="fas fa-arrow-right flow-arrow"></i>
+            <div class="flow-step">Model<br>Testing</div>
+            <i class="fas fa-arrow-right flow-arrow"></i>
+            <div class="flow-step">Prediction</div>
+        </div>
+    </div>
+
+    <!-- Model Performance -->
+    <div style="margin-bottom: 50px;">
+        <h2 class="text-center text-green" style="margin-bottom: 20px;">Model Performance (Random Forest Regressor)</h2>
+        <div class="stats-grid" id="metrics-container">
+            <!-- Populated by JS -->
+            <div class="stat-card" style="grid-column: 1/-1;"><div class="loader"></div></div>
+        </div>
+    </div>
+
+    <!-- Prediction Form -->
+    <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
+        <div class="card" style="flex: 1; min-width: 300px; max-width: 500px;">
+            <h3 style="margin-bottom: 20px; color: var(--primary-color);">Enter Environmental Factors</h3>
+            <form id="predictionForm">
+                <div class="form-group">
+                    <label>Distance from Road (m)</label>
+                    <input type="number" id="dist" class="form-control" required min="1" max="1000" step="0.1" value="50">
+                </div>
+                <div class="form-group">
+                    <label>Traffic Density (vph)</label>
+                    <input type="number" id="traffic" class="form-control" required min="0" max="10000" value="1500">
+                </div>
+                <div class="form-group">
+                    <label>Road Type</label>
+                    <select id="road" class="form-control" required>
+                        <option value="Highway">Highway</option>
+                        <option value="Arterial" selected>Arterial</option>
+                        <option value="Residential">Residential</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Wind Speed (km/h)</label>
+                    <input type="number" id="wind" class="form-control" required min="0" max="100" step="0.1" value="10">
+                </div>
+                <div class="form-group">
+                    <label>Humidity (%)</label>
+                    <input type="number" id="humidity" class="form-control" required min="0" max="100" step="0.1" value="60">
+                </div>
+                <div class="form-group">
+                    <label>Construction Activity</label>
+                    <select id="construction" class="form-control" required>
+                        <option value="Low" selected>Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Vegetation (%)</label>
+                    <input type="number" id="veg" class="form-control" required min="0" max="100" step="0.1" value="20">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Predict Dust Concentration</button>
+            </form>
+        </div>
+        
+        <div class="card" style="flex: 1; min-width: 300px; max-width: 500px; display: flex; flex-direction: column;">
+            <h3 style="margin-bottom: 20px; color: var(--primary-color);">Prediction Results</h3>
+            
+            <div id="resultContainer" style="display: none; flex: 1; flex-direction: column; justify-content: center;">
+                <div class="stat-card" style="margin-bottom: 20px; background-color: var(--accent-color);">
+                    <div class="stat-label">Predicted PM2.5</div>
+                    <div class="stat-value" id="res-pm25">--</div>
+                    <div style="font-size: 0.9rem;">µg/m³</div>
+                </div>
+                <div class="stat-card" style="margin-bottom: 20px; background-color: var(--accent-color);">
+                    <div class="stat-label">Predicted PM10</div>
+                    <div class="stat-value" id="res-pm10">--</div>
+                    <div style="font-size: 0.9rem;">µg/m³</div>
+                </div>
+                <div class="stat-card" style="border-top: 4px solid var(--primary-color);">
+                    <div class="stat-label">Air Quality Status</div>
+                    <div class="stat-value" id="res-status" style="font-size: 1.5rem; margin: 15px 0;">--</div>
+                </div>
+                
+                <div id="careAdviceContainer" style="margin-top: 20px; padding: 15px; border-radius: var(--border-radius); background-color: #f8f9fa; border-left: 4px solid var(--primary-color); display: none;">
+                    <h4 style="margin-bottom: 10px; color: var(--dark-color);"><i class="fas fa-info-circle"></i> Recommended Action:</h4>
+                    <p id="res-advice" style="font-size: 0.95rem; margin: 0; color: var(--text-color);">--</p>
+                </div>
+            </div>
+            
+            <div id="loadingContainer" style="display: none; flex: 1; align-items: center; justify-content: center;">
+                <div class="loader"></div>
+            </div>
+            
+            <div id="initialContainer" style="flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--text-light); padding: 40px;">
+                <p><i class="fas fa-robot" style="font-size: 3rem; margin-bottom: 15px; color: #ccc; display: block;"></i>Enter factors and click predict to see results from the trained model.</p>
+            </div>
+            
+            <div id="errorContainer" style="display: none; flex: 1; align-items: center; justify-content: center; text-align: center; color: red; padding: 20px;">
+                <p>Prediction model not available.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/prediction.js') }}"></script>
+{% endblock %}

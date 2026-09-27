@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}DustMonitor - Data{% endblock %}
+
+{% block content %}
+<div class="container section">
+    <h1 class="section-title">Environmental Dataset</h1>
+    
+    <div class="stats-grid" style="margin-bottom: 30px;" id="data-summary">
+        <!-- Summary loaded via JS -->
+    </div>
+
+    <div class="card" style="padding: 20px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search dataset..." style="max-width: 300px;">
+        </div>
+        
+        <div class="table-container" id="table-container">
+            <div class="text-center" style="padding: 40px;"><div class="loader"></div><p style="margin-top: 15px;">Loading dataset...</p></div>
+        </div>
+        
+        <div style="display: flex; justify-content: space-between; margin-top: 20px; align-items: center;">
+            <button id="prevBtn" class="btn btn-secondary" disabled>Previous</button>
+            <span id="pageInfo">Page 1</span>
+            <button id="nextBtn" class="btn btn-primary">Next</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/data.js') }}"></script>
+{% endblock %}

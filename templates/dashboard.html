@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}DustMonitor - Dashboard{% endblock %}
+
+{% block content %}
+<div class="container section">
+    <h1 class="section-title">Project Dashboard</h1>
+    
+    <!-- Top Cards -->
+    <div class="stats-grid" id="dash-stats" style="margin-bottom: 40px;">
+        <div class="stat-card"><div class="loader"></div></div>
+        <div class="stat-card"><div class="loader"></div></div>
+        <div class="stat-card"><div class="loader"></div></div>
+        <div class="stat-card"><div class="loader"></div></div>
+    </div>
+    
+    <!-- Charts -->
+    <div class="charts-grid" style="margin-bottom: 40px;">
+        <div class="chart-container">
+            <h3>PM2.5 Distribution</h3>
+            <canvas id="dash-dist25"></canvas>
+        </div>
+        <div class="chart-container">
+            <h3>PM10 Distribution</h3>
+            <canvas id="dash-dist10"></canvas>
+        </div>
+        <div class="chart-container">
+            <h3>Distance from Road vs PM2.5</h3>
+            <canvas id="dash-dist"></canvas>
+        </div>
+        <div class="chart-container">
+            <h3>Traffic Density vs PM2.5</h3>
+            <canvas id="dash-traffic"></canvas>
+        </div>
+    </div>
+    
+    <!-- Dataset Table Overview -->
+    <div class="card">
+        <h3 style="margin-bottom: 20px; color: var(--dark-color);">Dataset Preview (Latest 10 Records)</h3>
+        <div class="table-container" id="dash-table-container">
+            <div class="text-center" style="padding: 30px;"><div class="loader"></div></div>
+        </div>
+        <div class="text-center" style="margin-top: 20px;">
+            <a href="/data.html" class="btn btn-secondary">View Full Dataset</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}
